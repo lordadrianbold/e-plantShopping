@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addItem } from './CartSlice';
+import React, { useState, useEffect } from 'react';
+import './ProductList.css'
 import CartItem from './CartItem';
-import './ProductList.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { addItem } from './CartSlice';
 
-function ProductList({ onHomeClick }) {
-  const [showCart, setShowCart] = useState(false);
-  const [notification, setNotification] = useState(''); // Notification state
-  const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart.items);
+function ProductList() {
+    const [showCart, setShowCart] = useState(false);
+    const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
+    const [addedToCart, setAddedToCart] = useState({}); // To track which products are added to cart
+    const cart = useSelector((state) => state.cart);
+    const dispatch = useDispatch();
 
-  // Reduced data: one category with exactly 8 plants
-  const plantsArray = [
-    {
-      category: "Air Purifying Plants",
-      plants: [
+    const plantsArray = [
         {
-          name: "Snake Plant",
+            category: "Air Purifying Plants",
+            plants: [
+                {
+                    name: "Snake Plant",
                     image: "https://cdn.pixabay.com/photo/2021/01/22/06/04/snake-plant-5939187_1280.jpg",
                     description: "Produces oxygen at night, improving air quality.",
                     cost: "$15"
@@ -219,169 +219,102 @@ function ProductList({ onHomeClick }) {
         }
     ];
 
-  // Inline styling for navbar elements
-  const styleObj = {
-    backgroundColor: '#4CAF50',
-    color: '#fff',
-    padding: '15px',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    fontSize: '20px'
-  };
+    const styleObj = {
+        backgroundColor: '#4CAF50',
+        color: '#fff!important',
+        padding: '15px',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignIems: 'center',
+        fontSize: '20px',
+    }
+    const styleObjUl = {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: '1100px',
+    }
+    const styleA = {
+        color: 'white',
+        fontSize: '30px',
+        textDecoration: 'none',
+    }
 
-  const styleObjUl = {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '1100px'
-  };
+    const handleCartClick = (e) => {
+        e.preventDefault();
+        setShowCart(true); // Set showCart to true when cart icon is clicked
+    };
 
-  const styleA = {
-    color: 'white',
-    fontSize: '30px',
-    textDecoration: 'none'
-  };
+    const handlePlantsClick = (e) => {
+        e.preventDefault();
+        setShowPlants(true); // Set showAboutUs to true when "About Us" link is clicked
+        setShowCart(false); // Hide the cart when navigating to About Us
+    };
 
-  const handleHomeClick = (e) => {
-    e.preventDefault();
-    onHomeClick();
-  };
+    const handleContinueShopping = (e) => {
+        e.preventDefault();
+        setShowCart(false);
+    };
 
-  const handleCartClick = (e) => {
-    e.preventDefault();
-    setShowCart(true);
-  };
+    const handleAddToCart = (product) => {
+        dispatch(addItem(product));
 
-  const handlePlantsClick = (e) => {
-    e.preventDefault();
-    setShowCart(false);
-  };
+        setAddedToCart((prevState) => (
+            {
+                ...prevState,
+                [product.name]: true,
+            }
+        ));
+    };
 
-  const handleContinueShopping = (e) => {
-    e.preventDefault();
-    setShowCart(false);
-  };
 
-  // Dispatch action and show a fixed notification for 3 seconds
-  const handleAddToCart = (plant) => {
-    console.log("Added to cart:", plant);
-    const price = parseFloat(plant.cost.replace('$', ''));
-    dispatch(addItem({
-      name: plant.name,
-      price: price,
-      quantity: 1,
-      image: plant.image
-    }));
-    setNotification(`${plant.name} added to cart!`);
-    setTimeout(() => {
-      setNotification('');
-    }, 3000);
-  };
-
-  return (
-    <div>
-      <div className="navbar" style={styleObj}>
-        <div className="tag">
-          <div className="luxury">
-            <img
-              src="https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_1280.png"
-              alt="Paradise Nursery Logo"
-            />
-            <a href="/" onClick={handleHomeClick}>
-              <div>
-                <h3 style={{ color: 'white' }}>Paradise Nursery</h3>
-                <i style={{ color: 'white' }}>Where Green Meets Serenity</i>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div style={styleObjUl}>
-          <div>
-            <a href="#" onClick={handlePlantsClick} style={styleA}>
-              Plants
-            </a>
-          </div>
-          <div>
-            <a href="#" onClick={handleCartClick} style={styleA}>
-              <h1 className="cart">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 256 256"
-                  height="68"
-                  width="68"
-                >
-                  <rect width="156" height="156" fill="none"></rect>
-                  <circle cx="80" cy="216" r="12"></circle>
-                  <circle cx="184" cy="216" r="12"></circle>
-                  <path
-                    d="M42.3,72H221.7l-26.4,92.4A15.9,15.9,0,0,1,179.9,176H84.1a15.9,15.9,0,0,1-15.4-11.6L32.5,37.8A8,8,0,0,0,24.8,32H8"
-                    fill="none"
-                    stroke="#faf9f9"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                  ></path>
-                </svg>
-              </h1>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Fixed Notification Popup */}
-      {notification && (
-        <div 
-          style={{
-            position: 'fixed',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-            color: 'white',
-            padding: '20px',
-            borderRadius: '10px',
-            zIndex: 1000,
-            fontSize: '18px'
-          }}
-          className="notification"
-        >
-          {notification}
-        </div>
-      )}
-
-      {!showCart ? (
-        <div className="product-grid">
-          {plantsArray.map((category, catIndex) => (
-            <div key={`${category.category}-${catIndex}`} className="category">
-              <h2 className="category-title">{category.category}</h2>
-              <div className="category-plants">
-                {category.plants.map((plant, index) => (
-                  <div key={`${plant.name}-${index}`} className="plant-card">
-                    <img
-                      src={plant.image}
-                      alt={plant.name}
-                      className="plant-image"
-                    />
-                    <div className="plant-details">
-                      <h3>{plant.name}</h3>
-                      <p>{plant.description}</p>
-                      <p className="plant-cost">{plant.cost}</p>
-                      <button onClick={() => handleAddToCart(plant)}>
-                        Add to Cart
-                      </button>
+    return (
+        <div>
+            <div className="navbar" style={styleObj}>
+                <div className="tag">
+                    <div className="luxury">
+                        <img src="https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_1280.png" alt="" />
+                        <a href="/paradise-nursery-shopping-cart-app/" style={{ textDecoration: 'none' }}>
+                            <div>
+                                <h3 style={{ color: 'white' }}>Amena's Nursery</h3>
+                                <i style={{ color: 'white' }}>Where Green Meets Serenity</i>
+                            </div>
+                        </a>
                     </div>
-                  </div>
-                ))}
-              </div>
+                </div>
+                <div style={styleObjUl}>
+                    <div> <a href="#" onClick={(e) => handlePlantsClick(e)} style={styleA}>Plants</a></div>
+                    <div> <a href="#" onClick={(e) => handleCartClick(e)} style={styleA}><h1 className='cart'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" id="IconChangeColor" height="68" width="68"><rect width="156" height="156" fill="none"></rect><circle cx="80" cy="216" r="12"></circle><circle cx="184" cy="216" r="12"></circle><path d="M42.3,72H221.7l-26.4,92.4A15.9,15.9,0,0,1,179.9,176H84.1a15.9,15.9,0,0,1-15.4-11.6L32.5,37.8A8,8,0,0,0,24.8,32H8" fill="none" stroke="#faf9f9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" id="mainIconPathAttribute"></path><text x="90" y="155" font-family="Verdana" font-size="90" fill="white">{cart.numOfItems}</text></svg></h1></a></div>
+                </div>
             </div>
-          ))}
+            {!showCart ? (
+                <div>
+                    {plantsArray.map((section, sectionIndex) => (
+                        <div className="product-grid" key={sectionIndex}>
+                            <h2 className="plant_heading">{section.category}</h2>
+                            <div className="product-list">
+                                {section.plants.map((plant, plantIndex) => (
+                                    <div className="product-card" key={plantIndex}>
+                                        <h3 className="product-title">{plant.name}</h3>
+                                        <img className="product-image" src={plant.image} alt={plant.name} />
+                                        <p className="product-price">{plant.cost}</p>
+                                        <p>{plant.description}</p>
+                                        {cart.items.some(item => item.name === plant.name) ? (
+                                            <button className="product-button added-to-cart">Added to Cart</button>
+                                        ) : (
+                                            <button className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            ) : (
+                <CartItem onContinueShopping={handleContinueShopping} />
+            )}
         </div>
-      ) : (
-        <CartItem onContinueShopping={handleContinueShopping} />
-      )}
-    </div>
-  );
+    );
 }
 
 export default ProductList;
