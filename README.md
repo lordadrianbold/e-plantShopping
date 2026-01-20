@@ -70,7 +70,8 @@ Then, visit:
   
 ## 🤝 Contributions & Credits
 - Original Repository: https://github.com/ibm-developer-skills-network/e-plantShopping
-- Forked & Enhanced by: lordadrianbold - https://github.com/lordadrianbold/eplant-shopping
+- Forked & Enhanced by: lordadrianbold - https://github.com/lordadrianbold/e-plantShopping/tree/main
+
 - Technologies Used: React, Redux, Vite, GitHub Pages
 
 💡 Feel free to fork and modify this project further! 🚀
