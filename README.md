@@ -66,45 +66,6 @@ This project is deployed using GitHub Pages. To redeploy after making changes:
 ```bash
 npm run deploy
 ```
-Then, visit: https://github.com/lordadrianbold/e-plantShopping/tree/main
-
-## 🎯 Lessons Learned
-
-- Working with React and Redux to manage state efficiently
-- Handling dynamic routing with react-router-dom
-- Configuring Vite for optimal build and deployment
-- Debugging 404 errors in GitHub Pages
-  
-## 🤝 Contributions & Credits
-- Original Repository: https://github.com/ibm-developer-skills-network/e-plantShopping
-- Forked & Enhanced by: Ketan5757 - https://github.com/Ketan5757/eplant-shopping
-- Technologies Used: React, Redux, Vite, GitHub Pages
-
-💡 Feel free to fork and modify this project further! 🚀
-
-```
-### 2️⃣ Navigate into the project directory:
-
-```bash
-cd eplant-shopping
-```
-
-### 3️⃣ Install dependencies:
-
-```bash
-npm install
-```
-
-### 4️⃣ Start the development server:
-```bash
-npm run dev
-```
-
-## 🚀 Deployment
-This project is deployed using GitHub Pages. To redeploy after making changes:
-```bash
-npm run deploy
-```
 Then, visit: 
 
 ## 🎯 Lessons Learned
