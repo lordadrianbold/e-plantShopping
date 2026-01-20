@@ -35,7 +35,8 @@ During my course, I forked the e-Plant Shopping repository and made several enha
 ### 1️⃣ Clone the repository:
 
 ```bash
-git clone # 🌿 Paradise Nursery - E-Commerce Plant Store
+git clone # https://github.com/lordadrianbold/e-plantShopping/tree/main
+🌿 Paradise Nursery - E-Commerce Plant Store
 
 ## 📌 Project Overview
 
