@@ -35,9 +35,9 @@ During my course, I forked the e-Plant Shopping repository and made several enha
 ### 1️⃣ Clone the repository:
 
 ```bash
-git clone # https://github.com/lordadrianbold/e-plantShopping/tree/main
-
-## 2️⃣ Navigate into the project directory:
+git clone https://github.com/Ketan5757/eplant-shopping.git
+```
+### 2️⃣ Navigate into the project directory:
 
 ```bash
 cd eplant-shopping
