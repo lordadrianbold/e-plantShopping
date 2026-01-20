@@ -37,13 +37,6 @@ During my course, I forked the e-Plant Shopping repository and made several enha
 ```bash
 git clone # https://github.com/lordadrianbold/e-plantShopping/tree/main
 
-## 📖 How to Run Locally
-
-### 1️⃣ Clone the repository:
-
-```bash
-git clone # 🌿 Paradise Nursery - E-Commerce Plant Store
-
 ### 2️⃣ Navigate into the project directory:
 
 ```bash
