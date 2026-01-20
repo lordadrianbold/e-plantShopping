@@ -109,7 +109,7 @@ During my course, I forked the E-Plant Shopping repository and made several enha
 ### 1️⃣ Clone the repository:
 
 ```bash
-git clone https://github.com/Ketan5757/eplant-shopping.git
+git clone 
 ```
 ### 2️⃣ Navigate into the project directory:
 
@@ -133,7 +133,7 @@ This project is deployed using GitHub Pages. To redeploy after making changes:
 ```bash
 npm run deploy
 ```
-Then, visit: https://ketan5757.github.io/eplant-shopping/
+Then, visit: 
 
 ## 🎯 Lessons Learned
 
@@ -172,7 +172,7 @@ This project is deployed using GitHub Pages. To redeploy after making changes:
 ```bash
 npm run deploy
 ```
-Then, visit: https://ketan5757.github.io/eplant-shopping/
+Then, visit: 
 
 ## 🎯 Lessons Learned
 
@@ -211,7 +211,7 @@ This project is deployed using GitHub Pages. To redeploy after making changes:
 ```bash
 npm run deploy
 ```
-Then, visit: https://ketan5757.github.io/eplant-shopping/
+Then, visit: 
 
 ## 🎯 Lessons Learned
 
