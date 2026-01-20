@@ -70,7 +70,7 @@ Then, visit:
   
 ## 🤝 Contributions & Credits
 - Original Repository: https://github.com/ibm-developer-skills-network/e-plantShopping
-- Forked & Enhanced by: Ketan5757 - https://github.com/Ketan5757/eplant-shopping
+- Forked & Enhanced by: lordadrianbold - https://github.com/Ketan5757/eplant-shopping
 - Technologies Used: React, Redux, Vite, GitHub Pages
 
 💡 Feel free to fork and modify this project further! 🚀
