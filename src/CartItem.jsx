@@ -54,7 +54,7 @@ const CartItem = ({ onContinueShopping }) => {
           <div className="cart-item" key={item.name}>
             <img
               className="cart-item-image"
-              src={item.image || "https://cdn.pixabay.com/photo/2018/04/02/07/42/leaf-3283175_1280.jpg"}
+              src={item.image}
               alt={item.name}
               style={{
                 width: '150px',
